@@ -6,6 +6,8 @@ import 'package:nti2/src/core/widget/button.dart';
 import 'package:nti2/src/core/widget/custom_text_field.dart';
 import 'package:nti2/src/features/home/veiw/login_screen.dart';
 
+import '../../../core/model/auth_model.dart';
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -52,104 +54,123 @@ class _RegisterState extends State<Register> {
                   "Welcome",
                   style: TextStyle(fontSize: SizeApp.s20),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 20, top: 25),
-                  child: CustomTextField(
-                    prefix: Icons.person,
-                    label: "User name",
-                    hint: "Enter your user name",
-                    controller: name,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "user name should have 3 character at least";
-                      }
-                      return null;
-                    },
-                    keyboard: TextInputType.name,
-                  ),
+                SizedBox(
+                  height: 450,
+                  child: ListView.builder(
+                      itemCount: list.length,
+                      itemBuilder: (context, index) {
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 15),
+                          child: CustomTextField(
+                            authModel: AuthModel(
+                                keyboard: list[index].keyboard,
+                                prefixIcon: list[index].prefixIcon,
+                                hint: list[index].hint,
+                                lable: list[index].lable,
+                                controller: list[index].controller,
+                                validator: list[index].validator, obscure: list[index].obscure),
+                          ),
+                        );
+                      }),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                  ),
-                  child: CustomTextField(
-                    prefix: Icons.person,
-                    label: "ID",
-                    hint: "Enter your ID",
-                    controller: id,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "should be 14 numbers";
-                      }
-                      else if(value.length <14){
-                        return " ID must be at least 14 digits";
-                      }
-                    },
-                    keyboard: TextInputType.number,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                  ),
-                  child: CustomTextField(
-                    prefix: Icons.numbers,
-                    label: "Phone number",
-                    hint: "Enter your phone number",
-                    controller: phoneN,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "enter 11 number";
-                      }
-                      else if(value.length <11){
-                        return " phone number must be at least 11 digits";
-                      }
-                    },
-                    keyboard: TextInputType.number,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                  ),
-                  child: CustomTextField(
-                    prefix: Icons.email,
-                    label: "Email",
-                    hint: "Enter your Email",
-                    controller: email,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "enter valid email";
-                      }
-                      else if (!value.contains("@") ||
-                          !value.contains(".com")) {
-                        return " @example.com";
-                      }
-                    },
-                    keyboard: TextInputType.emailAddress,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                    bottom: 20,
-                  ),
-                  child: CustomTextField(
-                    prefix: Icons.password,
-                    label: "Password",
-                    hint: "Enter your password",
-                    controller: password,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "enter 8 characterd at least";
-                      }
-                      else if(value.length <8){
-                        return " password must be at least 8 digits";
-                      }
-                    },
-                    keyboard: TextInputType.visiblePassword,
-                    obsucre: true,
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.only(bottom: 20, top: 25),
+                //   child: CustomTextField(
+                //     prefix: Icons.person,
+                //     label: "User name",
+                //     hint: "Enter your user name",
+                //     controller: name,
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return "user name should have 3 character at least";
+                //       }
+                //       return null;
+                //     },
+                //     keyboard: TextInputType.name,
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     bottom: 20,
+                //   ),
+                //   child: CustomTextField(
+                //     prefix: Icons.person,
+                //     label: "ID",
+                //     hint: "Enter your ID",
+                //     controller: id,
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return "should be 14 numbers";
+                //       }
+                //       else if(value.length <14){
+                //         return " ID must be at least 14 digits";
+                //       }
+                //     },
+                //     keyboard: TextInputType.number,
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     bottom: 20,
+                //   ),
+                //   child: CustomTextField(
+                //     prefix: Icons.numbers,
+                //     label: "Phone number",
+                //     hint: "Enter your phone number",
+                //     controller: phoneN,
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return "enter 11 number";
+                //       }
+                //       else if(value.length <11){
+                //         return " phone number must be at least 11 digits";
+                //       }
+                //     },
+                //     keyboard: TextInputType.number,
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     bottom: 20,
+                //   ),
+                //   child: CustomTextField(
+                //     prefix: Icons.email,
+                //     label: "Email",
+                //     hint: "Enter your Email",
+                //     controller: email,
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return "enter valid email";
+                //       }
+                //       else if (!value.contains("@") ||
+                //           !value.contains(".com")) {
+                //         return " @example.com";
+                //       }
+                //     },
+                //     keyboard: TextInputType.emailAddress,
+                //   ),
+                // ),
+                // Padding(
+                //   padding: const EdgeInsets.only(
+                //     bottom: 20,
+                //   ),
+                //   child: CustomTextField(
+                //     prefix: Icons.password,
+                //     label: "Password",
+                //     hint: "Enter your password",
+                //     controller: password,
+                //     validator: (value) {
+                //       if (value!.isEmpty) {
+                //         return "enter 8 characterd at least";
+                //       }
+                //       else if(value.length <8){
+                //         return " password must be at least 8 digits";
+                //       }
+                //     },
+                //     keyboard: TextInputType.visiblePassword,
+                //     obsucre: true,
+                //   ),
+                // ),
                 Center(
                     child: Padding(
                   padding: const EdgeInsets.only(top: 80),
@@ -158,8 +179,10 @@ class _RegisterState extends State<Register> {
                     onPressed: () {
                       formKey.currentState!.reset();
                       setState(() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-            
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginScreen()));
                       });
                     },
                   ),

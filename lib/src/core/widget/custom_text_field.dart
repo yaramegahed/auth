@@ -1,45 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:nti2/src/core/model/auth_model.dart';
 
 import '../style/colors.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField(
-      {super.key,
-      required this.prefix,
-      required this.label,
-      required this.hint, required this.controller, this.validator, required this.keyboard, this.obsucre=false});
+  CustomTextField({super.key,required this.authModel});
 
-  final IconData prefix;
-  final String label;
-  final String hint;
-  final TextInputType keyboard;
-  final TextEditingController controller;
-  final String? Function(String?)? validator;
-  final bool obsucre;
+  AuthModel authModel;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       style: const TextStyle(fontWeight: FontWeight.bold),
-
       autovalidateMode: AutovalidateMode.onUserInteraction,
-      validator: validator,
-      controller: controller,
-      keyboardType: keyboard,
+      validator: authModel.validator,
+      controller: authModel.controller,
+      keyboardType: authModel.keyboard,
       textInputAction: TextInputAction.done,
-      obscureText: obsucre,
+      obscureText: authModel.obscure,
       decoration: InputDecoration(
           prefixIcon: Padding(
             padding: const EdgeInsets.all(5.0),
-            child: Icon(prefix,color: AppColor.brown,),
+            child: authModel.prefixIcon,
           ),
-          suffix: InkWell(onTap: (){
-            controller.clear();
-          },
+          suffix: InkWell(
+              onTap: () {
+                authModel.controller.clear();
+              },
               child: const Icon(Icons.highlight_remove)),
-          label: Text(label),
+          label: authModel.lable,
           labelStyle: const TextStyle(color: AppColor.grey),
-          hintText: hint,
+          hintText: authModel.hint,
           border: border(color: AppColor.brown, radius: 20),
           // enabledBorder: border(color: AppColor.green, radius: 20),
           focusedBorder: border(color: AppColor.red, radius: 20)),
