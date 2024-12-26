@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nti2/src/core/widget/appBar.dart';
 import 'package:nti2/src/core/widget/button.dart';
+import 'package:nti2/src/features/home/veiw/home_screen.dart';
 
 import '../../../../core/model/auth_model.dart';
 import '../../../../core/style/Size.dart';
@@ -46,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 200,
                   child: ListView.builder(
                       itemCount: 2,
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(bottom: 15.0),
@@ -99,16 +100,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 //     obsucre: true,
                 //   ),
                 // ),
-                SizedBox(
+                const SizedBox(
                   height: 100,
                 ),
-                Button(text: "login", onPressed: () {}),
+                Button(text: "login", onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>   const HomeScreen()));
+                }),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("Do not have an accout?"),
+                    const Text("Do not have an accout?"),
                     TextButton(onPressed: () { Navigator.pop(context);
-                    }, child: Text("Sign up"))
+                    }, child: const Text("Sign up"))
                   ],
                 ),
               ],

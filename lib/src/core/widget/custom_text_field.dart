@@ -15,6 +15,7 @@ class CustomTextField extends StatelessWidget {
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: authModel.validator,
       controller: authModel.controller,
+      onSaved: authModel.onSaved,
       keyboardType: authModel.keyboard,
       textInputAction: TextInputAction.done,
       obscureText: authModel.obscure,
