@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:nti2/src/core/widget/appBar.dart';
 import 'package:nti2/src/core/widget/button.dart';
 
-import '../../../core/model/auth_model.dart';
-import '../../../core/style/Size.dart';
-import '../../../core/style/colors.dart';
-import '../../../core/widget/custom_text_field.dart';
+import '../../../../core/model/auth_model.dart';
+import '../../../../core/style/Size.dart';
+import '../../../../core/style/colors.dart';
+import '../../../../core/widget/custom_text_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar:
           appBar(title: "Login", color: AppColor.white, fontSize: SizeApp.s25),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.only(right: 15.0,left: 15,top: 80),
         child: Form(
           key: formKey,
           child: SingleChildScrollView(
@@ -43,7 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 SizedBox(
-                  height: 450,
+                  height: 200,
                   child: ListView.builder(
                       itemCount: 2,
                       padding: EdgeInsets.all(15),

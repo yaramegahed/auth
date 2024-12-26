@@ -4,9 +4,9 @@ import 'package:nti2/src/core/style/colors.dart';
 import 'package:nti2/src/core/widget/appBar.dart';
 import 'package:nti2/src/core/widget/button.dart';
 import 'package:nti2/src/core/widget/custom_text_field.dart';
-import 'package:nti2/src/features/home/veiw/login_screen.dart';
+import 'package:nti2/src/features/home/veiw/auth/login_screen.dart';
 
-import '../../../core/model/auth_model.dart';
+import '../../../../core/model/auth_model.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});

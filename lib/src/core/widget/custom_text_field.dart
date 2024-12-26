@@ -20,7 +20,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: authModel.obscure,
       decoration: InputDecoration(
           prefixIcon: Padding(
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(5),
             child: authModel.prefixIcon,
           ),
           suffix: InkWell(
