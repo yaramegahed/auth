@@ -43,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 15),
                         child: CustomTextField(
+                          // controller: index==0?cont1:cont2,
                           authModel: AuthModel(
                               onSaved: (e) {
                                 if (index == 0) {
